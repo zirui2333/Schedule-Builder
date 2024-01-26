@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C8D2BD5D2B63355B0033F738 /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		C8DDB1F82B5DEAAA00F411DB /* 1 - Schedule Builder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "1 - Schedule Builder"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8DDB1FB2B5DEAAA00F411DB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C8DDB2022B5DEAC100F411DB /* Builder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Builder.cpp; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		C8DDB1EF2B5DEAAA00F411DB = {
 			isa = PBXGroup;
 			children = (
+				C8D2BD5D2B63355B0033F738 /* Log.h */,
 				C8DDB1FA2B5DEAAA00F411DB /* 1 - Schedule Builder */,
 				C8DDB1F92B5DEAAA00F411DB /* Products */,
 			);
