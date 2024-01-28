@@ -1,51 +1,33 @@
-//
-//  Builder.hpp
-//  1 - Schedule Builder
-//
-//  Created by Zirui Zheng  on 1/21/24.
-//
+/*A reference to the list of event
+ Build(): Build the event for current day
+ Check(): Search if the day is applicable to build such event
+ */
+
 
 #ifndef Builder_hpp
 #define Builder_hpp
 
 #include <iostream>
-#include <fstream>
 #include <vector>
-#include <cstring>
-#include <unordered_map>
 
-
+#include "Event.hpp"
 
 class Builder{
 private:
-    struct Event{
-        std::string name_of_event;
-        double time;
-        
-        enum Fre{
-            everyday, twice_in_arow_, once_every_two_days
-        };
-        Fre frequency;
-    };
+    const std::vector<Event>* event_list;
+    std::vector<Event>* day;
     
-    typedef Event::Fre Fre;
-    
-    static const int Maxday;
-    std::vector<std::vector<Event>> schedule_;
-    
-    
-private:
-    bool Insert(const std::string& event_, double time_, const Fre& frequency_);
-    bool Check(double time, const Fre& frequency_);
+    void Build();
+    bool Check();
 public:
-    Builder();
-    Builder(const std::string& file_name_);
-    
-    void CreateExisting(const std::string& file_name_);
-    void InsertMore(const std::string& file_name_);
-
-    
-    ~Builder();
+    Builder(const std::vector<Event>& events, std::vector<Event>& d);
 };
 
-#endif /* Builder_hpp */
+
+
+
+
+
+
+
+#endif
