@@ -2,9 +2,12 @@
  Issues
  
  01/27/2024
-    1) Day vector ptr in builder doesn't work the same way as raw vector
+    1) Day vector ptr in builder doesn't work the same way as raw vector [Solved]
  
- 
+ 01/28/2024
+    1) Construct the completed_event structure
+    2) operatro= issue in Builder::Build()
+    3) Prioritize hierarchy of frequency
  */
 
 #ifndef Log_h
