@@ -11,31 +11,63 @@
 
 #include <iostream>
 
+struct Name{
+    explicit Name(const std::string& n) : name(n){}
+    std::string name;
+};
 
-class Event{
-private:
-    Event(){}
-private:
-    enum frequency{
+struct Time{
+    explicit Time(const double& t) : time(t){}
+    double time;
+    
+    const double operator() (){
+        return time;
+    }
+};
+
+struct Frequency{
+    enum frequency_type{
         everyday, twice_in_arow_, once_every_two_days
     };
     
-    std::string name;
-    double time;
-    frequency fre;
+    explicit Frequency(const std::string& fre) : freqency(FrequencyConvert(fre)){}
+    frequency_type freqency;
     
-    frequency FrequencyConvert(const std::string& f);
+    static frequency_type FrequencyConvert(const std::string& f);
+    const std::string GetFrequency() const;
+    
+    bool operator == (const Frequency& rhs){
+        return this -> GetFrequency() == rhs.GetFrequency();
+    }
+    bool operator == (const std::string& s_){
+        return this -> GetFrequency() == s_;
+    }
+    
+    const Frequency& operator= (const std::string& s_){
+        freqency = FrequencyConvert(s_);
+        return *this;
+    }
+};
+
+
+class Event{
+private:
+    Event();
+private:
+    Name name_;
+    Time time_;
+    Frequency fre_;
+
 public:
     
-    Event(const std::string& n, const double t, const std::string& f);
+    Event(const Name& n, const Time& t, const Frequency& f);
     
-    void ChangeName(const std::string& name_);
-    void ChangeTime(const double time_);
-    void ChangeFrequency(const std::string& fre_);
+    void ChangeName(const Name& name_);
+    void ChangeTime( const Time& time_);
+    void ChangeFrequency(const Frequency& fre_);
     
     const std::string& GetName() const;
     const double GetTime() const;
-    const std::string& GetFrequency() const;
 };
 
 #endif /* Event_hpp */

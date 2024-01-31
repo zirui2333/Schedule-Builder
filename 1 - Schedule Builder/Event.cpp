@@ -6,14 +6,14 @@
 
 #include "Event.hpp"
 
-Event::Event(const std::string& n, const double t, const std::string& f) :
-                    name(n), time(t), fre(FrequencyConvert(f)){}
+Event::Event(const Name& n, const Time& t, const Frequency& f):
+                    name_(n), time_(t), fre_(f){}
 
-Event::frequency Event::FrequencyConvert(const std::string& f){
-    static std::unordered_map<std::string, frequency> map = {
-        {"everyday", Event::everyday},
-        {"twice_in_arow_", Event::twice_in_arow_},
-        {"once_every_two_days", Event::once_every_two_days}
+Frequency::frequency_type Frequency::FrequencyConvert(const std::string& f){
+    static std::unordered_map<std::string, frequency_type> map = {
+        {"everyday", frequency_type::everyday},
+        {"twice_in_arow_", frequency_type::twice_in_arow_},
+        {"once_every_two_days", frequency_type::once_every_two_days}
     };
     
     try{
@@ -29,9 +29,19 @@ Event::frequency Event::FrequencyConvert(const std::string& f){
     return map[f];
 }
 
-void Event::ChangeName(const std::string& name_){
-    std::string s = name_;
-    while(this -> name == s){
+const std::string Frequency::GetFrequency() const{
+    static std::unordered_map<Frequency::frequency_type, std::string> Reverse_map = {
+        {frequency_type::everyday, "everyday"},
+        {frequency_type::twice_in_arow_, "twice_in_arow_"},
+        { frequency_type::once_every_two_days,"once_every_two_days"}
+    };
+    return Reverse_map[freqency];
+}
+
+
+void Event::ChangeName(const Name& n){
+    std::string s = n.name;
+    while(this -> name_.name == s){
         std::cout << "The new event name is identical to the old version, please re-enter a new name or type 'E' to exit\n";
         
         std::cin >> s;
@@ -41,12 +51,12 @@ void Event::ChangeName(const std::string& name_){
         }
     }
     
-    this -> name = name_;
+    this -> name_.name = s;
 }
 
-void Event::ChangeTime(const double time_){
-    double time_input = time_;
-    while(this -> time == time_input){
+void Event::ChangeTime(const Time& t){
+    double time_input = t.time;
+    while(this -> time_.time == time_input){
         std::cout << "The new event time is identical to the old version, please re-enter a new time or type 'E' to exit\n";
         
         std::string s;
@@ -58,12 +68,12 @@ void Event::ChangeTime(const double time_){
         
         time_input = stod(s);
     }
-    this -> time = time_input;
+    this -> time_.time = time_input;
 }
 
-void Event::ChangeFrequency(const std::string& fre_){
-    std::string s = fre_;
-    while(this -> fre == FrequencyConvert(s)){
+void Event::ChangeFrequency(const Frequency& fre_){
+    std::string s = fre_.GetFrequency();
+    while(this -> fre_ == s){
         std::cout << "The new event frequency is identical to the old version, please re-enter a new frequency or type 'E' to exit\n";
         
         std::cin >> s;
@@ -72,22 +82,14 @@ void Event::ChangeFrequency(const std::string& fre_){
             return;
         }
     }
-    this -> fre = FrequencyConvert(s);
+    this -> fre_ = s;
 }
 
-const std::string& Event::GetName() const{
-    return name;
+const std::string& Event:: GetName() const{
+    return name_.name;
 }
 
 const double Event::GetTime() const{
-    return time;
+    return time_.time;
 }
 
-const std::string& Event::GetFrequency() const{
-    static std::unordered_map<frequency, std::string> Reverse_map = {
-        {Event::everyday, "everyday"},
-        {Event::twice_in_arow_, "twice_in_arow_"},
-        { Event::once_every_two_days,"once_every_two_days"}
-    };
-    return Reverse_map[fre];
-}
