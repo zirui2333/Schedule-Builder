@@ -68,8 +68,8 @@
 				C8DDB1FB2B5DEAAA00F411DB /* main.cpp */,
 				C8DDB2022B5DEAC100F411DB /* Builder.cpp */,
 				C8DDB2032B5DEAC100F411DB /* Builder.hpp */,
-				C869D5112B64898800102DCB /* Event.cpp */,
 				C869D5122B64898800102DCB /* Event.hpp */,
+				C869D5112B64898800102DCB /* Event.cpp */,
 			);
 			path = "1 - Schedule Builder";
 			sourceTree = "<group>";

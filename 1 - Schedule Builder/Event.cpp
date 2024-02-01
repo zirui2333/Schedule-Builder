@@ -40,8 +40,8 @@ const std::string Frequency::GetFrequency() const{
 
 
 void Event::ChangeName(const Name& n){
-    std::string s = n.name;
-    while(this -> name_.name == s){
+    std::string s = n;
+    while(this -> name_ == s){
         std::cout << "The new event name is identical to the old version, please re-enter a new name or type 'E' to exit\n";
         
         std::cin >> s;
@@ -51,12 +51,12 @@ void Event::ChangeName(const Name& n){
         }
     }
     
-    this -> name_.name = s;
+    name_.changeName(s);
 }
 
 void Event::ChangeTime(const Time& t){
-    double time_input = t.time;
-    while(this -> time_.time == time_input){
+    double time_input = t;
+    while(this -> time_ == time_input){
         std::cout << "The new event time is identical to the old version, please re-enter a new time or type 'E' to exit\n";
         
         std::string s;
@@ -68,11 +68,11 @@ void Event::ChangeTime(const Time& t){
         
         time_input = stod(s);
     }
-    this -> time_.time = time_input;
+    time_.changeTime(time_input);
 }
 
 void Event::ChangeFrequency(const Frequency& fre_){
-    std::string s = fre_.GetFrequency();
+    std::string s = fre_;
     while(this -> fre_ == s){
         std::cout << "The new event frequency is identical to the old version, please re-enter a new frequency or type 'E' to exit\n";
         
@@ -82,14 +82,18 @@ void Event::ChangeFrequency(const Frequency& fre_){
             return;
         }
     }
-    this -> fre_ = s;
+    this -> fre_.changeFrequency(s);
 }
 
-const std::string& Event:: GetName() const{
-    return name_.name;
+const std::string Event:: GetName() const{
+    return name_;
 }
 
 const double Event::GetTime() const{
-    return time_.time;
+    return time_;
+}
+
+const std::string Event::GetFrequency() const{
+    return fre_;
 }
 
