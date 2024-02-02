@@ -8,6 +8,8 @@
     1) Construct the completed_event structure
     2) operatro= issue in Builder::Build()
     3) Prioritize hierarchy of frequency
+
+    
  */
 
 #ifndef Log_h

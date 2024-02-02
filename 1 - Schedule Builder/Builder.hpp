@@ -31,6 +31,8 @@ private:
     double Check(const double& time_);
     double Time_addition(const double& begin, const double& duration_);
 public:
+    //Situation one, the user has a file of must-do events at the beginning
+    //User will pass a file contains all must-do events will time, and builder should fill out events and pass
     Builder(const std::vector<Event>& events, std::vector<Event>& d);
 };
 
