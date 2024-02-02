@@ -9,7 +9,8 @@
     2) operatro= issue in Builder::Build()
     3) Prioritize hierarchy of frequency
 
-    
+02/01/2024
+    1) Day (Monday ..... Sunday) system needs to be introduced ***
  */
 
 #ifndef Log_h
